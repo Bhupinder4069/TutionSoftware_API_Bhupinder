@@ -74,7 +74,6 @@
         </div>
     </div>
 </div>
-<script src="~/lib/jquery/dist/jquery.js"></script>
 <script>
     function AddEditRecord(id, subjectName, fee) {
         $("#SubjectName").val(subjectName);
@@ -128,7 +127,7 @@
             dataType: "JSON",
             success: function (data) {
                 $("#tab1").find("tr:gt(0)").remove();
-                $.getJSON("/api/Wines/", function (data) {
+                $.getJSON("/api/Subjects/", function (data) {
                     $("#tab1").css("display", "block");
                     $.each(data, function (key, val) {
                         $("<tr class='even pointer'><td width='180px'>" + val.id + "</td><td width='180px'>" + val.subjectName + "</td><td width='180px'>" + val.fees + "</td><td width='240px'>" + "<button class='btn btn-warning btn-xs' onclick='AddEditRecord(" + val.id + ',"' + val.subjectName + '","' + val.fees + '"' + ");'" + ">Edit</button> <button class='btn btn-danger btn-xs' onclick='DeleteRecord(" + val.id + ");'" + ">Delete</button>" + "</td></tr>").appendTo($("#tab1"));
@@ -172,7 +171,7 @@
                     success: function (data) {
                         $("#ID").val('');
                         $("#tab1").find("tr:gt(0)").remove();
-                        $.getJSON("/api/Wines/", function (data) {
+                        $.getJSON("/api/Subjects/", function (data) {
                             $("#tab1").css("display", "block");
                             $.each(data, function (key, val) {
                                 $("<tr class='even pointer'><td width='180px'>" + val.id + "</td><td width='180px'>" + val.subjectName + "</td><td width='180px'>" + val.fees + "</td><td width='240px'>" + "<button class='btn btn-warning btn-xs' onclick='AddEditRecord(" + val.id + ',"' + val.subjectName + '","' + val.fees + '"' + ");'" + ">Edit</button> <button class='btn btn-danger btn-xs' onclick='DeleteRecord(" + val.id + ");'" + ">Delete</button>" + "</td></tr>").appendTo($("#tab1"));
